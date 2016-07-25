@@ -1,5 +1,7 @@
-## flavoUr
-### Uber for homecooked meals
+# flavoUr
+---------
+### **Uber for homecooked meals**
+
 
 #### User Stories
 
