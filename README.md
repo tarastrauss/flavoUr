@@ -15,7 +15,7 @@
 
 #### Technologies
 
-*Frontend*
+**Frontend**
 - React.js
 - jQuery
 - Javascript
@@ -23,12 +23,12 @@
 - HTML
 - frontend visual framework? bootstrap? materialize? animate.css?
 
-*Backend*
+**Backend**
 - Django 1.9.4
 - Python 2.7
 - MySQL
 
 #### Installation
-
+Yes
 #### Deployment
 
