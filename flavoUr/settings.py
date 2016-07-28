@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pipeline',
     'users',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,7 +124,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'flavoUr/static')
+    os.path.join(BASE_DIR, 'flavoUr/static')
 ]
 
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+
+PIPELINE = {
+    'COMPILERS':  'react.utils.pipeline.JSXCompiler',
+    'PIPELINE_ENABLED': True,
+    'STYLESHEETS': {
+        'colors': {
+            'source_filenames': (
+              'static/flavoUr/css/*.css',
+            ),
+            'output_filename': 'css/main.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    },
+    'JAVASCRIPT': {
+        'stats': {
+            'source_filenames': (
+              'js/*.js'
+            ),
+            'output_filename': 'js/stats.js',
+        }
+    }
+}
