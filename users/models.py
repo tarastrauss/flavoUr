@@ -8,3 +8,12 @@ class User(AbstractUser):
                                 help_text='URL pointing to the users profile picture')
 
   objects = UserManager()
+
+  class Meta:
+
+    permissions = (
+      ('order_meal', 'Order Meal'),
+      ('add_allergies', 'Add Allergies'),
+      ('review_meal', 'Review Meal'),
+      ('add_menu', 'Add Menu')
+    )
