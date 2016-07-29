@@ -2,6 +2,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   //base directory for resolving entry option
@@ -20,17 +21,17 @@ module.exports = {
     new BundleTracker({
       filename: './webpack-stats.json'
     }),
-
+    new ExtractTextPlugin('style.css', { allChunks: true}),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'windor.jQuery': 'jquery'
+      'window.jQuery': 'jquery'
     })
   ],
 
   module: {
     loaders: [
-
+      { test: /\.css$/, loader: "style-loader!css-loader" },
       //regexp that tells webpack to use following loaders on .js & .jsx files
       {
         test: /\.jsx?$/,
