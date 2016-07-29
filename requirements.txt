@@ -1,3 +1,2 @@
-django-pipeline
-PyReact==0.6.0
-
+Django==1.9.4
+django-webpack-loader
