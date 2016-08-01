@@ -55,12 +55,10 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'flavoUr.urls'
 
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_PATH, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'flavoUr/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
