@@ -12,6 +12,9 @@
 <body>
 <h1>Welcome to Flavour</h1>
 <h2>Home-made cooking is just <i>next-door</i>.</h2>
+{% load socialaccount %}
+{% providers_media_js %}
+<a href="{% provider_login_url "facebook" method="js_sdk" %}">Facebook Connect</a>
 <div class="container">
   <div class="demo-card-image mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title mdl-card--expand"></div>
