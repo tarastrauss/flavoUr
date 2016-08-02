@@ -1,1 +1,5 @@
 *.sqlite3
+*.pyc
+node_modules/
+public/
+flavoUr_env/

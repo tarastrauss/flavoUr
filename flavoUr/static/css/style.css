@@ -9,7 +9,7 @@ h1 {
   margin:auto;
   width: 90%;
   height: 256px;
-  background: url('../assets/burger.jpeg') center / cover;
+/*background: url('../assets/burger.jpeg') center / cover;*/
 }
 .demo-card-image > .mdl-card__actions {
   height: 52px;
