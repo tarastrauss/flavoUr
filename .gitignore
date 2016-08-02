@@ -3,3 +3,5 @@
 node_modules/
 public/
 flavoUr_env/
+webpack-stats.json
+

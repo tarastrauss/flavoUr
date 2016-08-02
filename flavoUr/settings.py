@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+SOCIAL_AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -69,11 +70,11 @@ SOCIALACCOUNT_PROVIDERS = {
 
     'facebook': {
         'VERIFIED_EMAIL': False,
-        'SCOPE': ['email'],
+        'SCOPE': ['email', 'public_profile'],
         'METHOD': 'js_sdk'  # instead of 'oauth2'
     }
 }
-SITE_ID=2
+SITE_ID=4
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

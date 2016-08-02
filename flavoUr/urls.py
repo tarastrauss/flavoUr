@@ -19,12 +19,10 @@ from . import views
 from django.conf.urls import include
 import allauth
 
-admin.autodiscover()
-
 from django.conf import settings
 urlpatterns = [
     url(r'^$', views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls'))
 ]
