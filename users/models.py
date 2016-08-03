@@ -8,3 +8,4 @@ class User(AbstractUser):
                                 help_text='URL pointing to the users profile picture')
 
   objects = UserManager()
+

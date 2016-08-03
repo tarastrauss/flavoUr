@@ -15,14 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import views
+from flavoUr.views import home
 from django.conf.urls import include
-import allauth
 
-from django.conf import settings
 urlpatterns = [
-    url(r'^$', views.home),
+    url(r'^$', home),
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls'))
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
 ]
