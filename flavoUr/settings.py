@@ -46,46 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
 ]
 
-AUTH_USER_MODEL = 'users.User'
-SOCIAL_AUTH_USER_MODEL = 'users.User'
-
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend"
-)
-
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     "django.core.context_processors.request",
-#     "django.contrib.auth.context_processors.auth",
-#     "allauth.account.context_processors.account",
-#     "allauth.socialaccount.context_processors.socialaccount",
-# )
-
-# auth and allauth settings
-
-SOCIALACCOUNT_QUERY_EMAIL = True
-SOCIALACCOUNT_PROVIDERS = {
-
-    'facebook': {
-        # 'VERIFIED_EMAIL': False,
-        'SCOPE': ['email', 'public_profile'],
-        'METHOD': 'js_sdk'  # instead of 'oauth2'
-    }
-}
-SITE_ID=1
-MIDDLEWARE_CLASSES = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
 ROOT_URLCONF = 'flavoUr.urls'
 
 TEMPLATES = [
@@ -99,8 +59,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # "allauth.account.context_processors.account",
-                # "allauth.socialaccount.context_processors.socialaccount",
             ],
         },
     },
@@ -108,15 +66,51 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'flavoUr.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+SITE_ID=6
+
+# auth and allauth settings
+# http://django-allauth.readthedocs.io/en/latest/overview.html
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = None
+AUTH_USER_MODEL = 'users.User'
+SOCIAL_AUTH_USER_MODEL = 'users.User'
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'js_sdk',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone'],
+        'EXCHANGE_TOKEN': True,
+        'VERSION': 'v2.4'}
 }
+
+LOGIN_REDIRECT_URL = '/profile/'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -135,6 +129,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Database
+# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls'))
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^profile/', views.profile)
 ]
