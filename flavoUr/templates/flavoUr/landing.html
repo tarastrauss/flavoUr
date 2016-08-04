@@ -37,6 +37,7 @@
         }
       }).done(function() {
         console.log('hit backend');
+        console.log('logged in as {{ user }}');
       });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -102,8 +103,10 @@
     FB.api('/me?fields=first_name,last_name', function(response) {
       console.log(response);
       console.log('Successful login for: ' + response.first_name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.first_name + '!';
+      {% if user.is_authenticated %}
+        document.getElementById('status').innerHTML =
+          'Thanks for logging in, ' + response.first_name + '!';
+      {% endif %}
     });
   }
 </script>

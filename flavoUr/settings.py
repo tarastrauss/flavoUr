@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 from os.path import abspath, basename, dirname, join, normpath
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'oauth2_provider',
+    'rest_framework',
     'social.apps.django_app.default',
     'rest_framework_social_oauth2',
     'django.contrib.admindocs',
@@ -49,23 +50,27 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.ext.rest_framework.OAuth2Authentication',
         'rest_framework_social_oauth2.authentication.SocialAuthentication',
-    )
+    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # )
 }
 
-# PROPRIETARY_BACKEND_NAME = 'flavoUr'
+PROPRIETARY_BACKEND_NAME = 'Facebook'
 
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookAppOAuth2',
+    # 'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.facebook.FacebookOAuth2',
     'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    # 'oauth2_provider.backends.OAuth2Backend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'email,first_name,last_name',
+    'fields': 'email,first_name,last_name,id',
 }
 
 SOCIAL_AUTH_PIPELINE = (
@@ -95,6 +100,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'flavoUr.urls'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/loggedin/'
+SOCIAL_AUTH_LOGIN_URL = 'auth/'
 
 TEMPLATES = [
     {

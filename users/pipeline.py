@@ -6,6 +6,11 @@ def test_pipeline(backend, user, response, *args, **kwargs):
   print 'hi from inside the auth pipeline!'
   if backend.name == 'facebook':
     print response
-    print user
+    print user.first_name
+    print user.username
+    print user.id
     current_user=User.objects.get(id=user.id)
-    print 'from our database %s' % current_user.first_name
+    print current_user.username
+    current_user.profile_pic = "http://graph.facebook.com/%s/picture" % user.username
+    current_user.save()
+    print current_user.profile_pic
