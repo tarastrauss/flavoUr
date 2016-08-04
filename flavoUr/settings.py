@@ -56,12 +56,12 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend"
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.request",
-    "django.contrib.auth.context_processors.auth",
-    "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount",
-)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.core.context_processors.request",
+#     "django.contrib.auth.context_processors.auth",
+#     "allauth.account.context_processors.account",
+#     "allauth.socialaccount.context_processors.socialaccount",
+# )
 
 # auth and allauth settings
 
@@ -69,12 +69,12 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
 
     'facebook': {
-        'VERIFIED_EMAIL': False,
+        # 'VERIFIED_EMAIL': False,
         'SCOPE': ['email', 'public_profile'],
         'METHOD': 'js_sdk'  # instead of 'oauth2'
     }
 }
-SITE_ID=4
+SITE_ID=1
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,6 +99,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # "allauth.account.context_processors.account",
+                # "allauth.socialaccount.context_processors.socialaccount",
             ],
         },
     },
