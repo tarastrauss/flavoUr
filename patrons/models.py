@@ -8,7 +8,7 @@ class PatronInfo(models.Model):
   Represents the Patron Info profile for a User.
   '''
 
-  user_info = AutoOneToOneField(User, help_text="Automatically stores user"
-                                  "info in the PatronInfo class when a user"
-                                  "is created", primary_key=True)
+  user_info = AutoOneToOneField(User, help_text="Automatically connects user"
+                                  "to the PatronInfo class when a useris created",
+                                  primary_key=True)
 
