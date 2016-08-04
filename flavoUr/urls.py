@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
-    url(r'^loggedin/$', loggedin),
+    url(r'^loggedin/$', loggedin, name='loggedin'),
 ]

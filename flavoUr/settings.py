@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'oauth2_provider',
     'rest_framework',
+    'oauth2_provider',
     'social.apps.django_app.default',
     'rest_framework_social_oauth2',
     'django.contrib.admindocs',
@@ -56,7 +56,7 @@ REST_FRAMEWORK = {
     # )
 }
 
-PROPRIETARY_BACKEND_NAME = 'Facebook'
+# PROPRIETARY_BACKEND_NAME = 'Facebook'
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -100,7 +100,10 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'flavoUr.urls'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/loggedin/'
+
+from django.core.urlresolvers import reverse_lazy
+LOGIN_REDIRECT_URL = reverse_lazy('loggedin')
+
 SOCIAL_AUTH_LOGIN_URL = 'auth/'
 
 TEMPLATES = [
