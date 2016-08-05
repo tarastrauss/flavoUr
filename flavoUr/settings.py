@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'annoying',
     'patrons',
     'chefs',
+    'reviews',
     'users',
     'django.contrib.sites',
     'django.contrib.admin',

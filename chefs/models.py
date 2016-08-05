@@ -2,17 +2,17 @@ from __future__ import unicode_literals
 from users.models import User
 from django.db import models
 
-class ChefInfo(models.Model):
+class Chef(models.Model):
     '''
-    Represents the Chef Info profile for a User.
+    Represents the Chef profile for a User.
     '''
 
-    user_info = models.OneToOneField(User, help_text='Connects user'
-                                    'to the ChefInfo class.',
+    user = models.OneToOneField(User, help_text='Connects user model'
+                                    ' to the Chef class.',
                                     primary_key=True)
-    star_rating = models.IntegerField(default=0, help_text='average value of'
-                                     'star ratings')
+    rating = models.DecimalField(decimal_places=2, max_digits=3, default=0,
+                                      help_text='average value of review stars.')
 
     def __unicode__(self):
 
-        return self.user_info.first_name
+        return self.user.first_name
