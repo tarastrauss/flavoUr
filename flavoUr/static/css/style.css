@@ -1,0 +1,23 @@
+body {
+  text-align:center;
+}
+h1 {
+  color:blue;
+}
+
+.demo-card-image.mdl-card {
+  margin:auto;
+  width: 90%;
+  height: 256px;
+/*background: url('../assets/burger.jpeg') center / cover;*/
+}
+.demo-card-image > .mdl-card__actions {
+  height: 52px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.demo-card-image__filename {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
