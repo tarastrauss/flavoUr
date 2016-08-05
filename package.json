@@ -1,7 +1,7 @@
 {
   "name": "flavour",
   "version": "1.0.0",
-  "description": "---------",
+  "description": "loads fontend dependencies for flavoUr",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
