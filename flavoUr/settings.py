@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'annoying',
     'patrons',
+    'chefs',
     'users',
     'django.contrib.sites',
     'django.contrib.admin',
