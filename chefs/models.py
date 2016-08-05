@@ -13,3 +13,6 @@ class ChefInfo(models.Model):
     star_rating = models.IntegerField(default=0, help_text='average value of'
                                      'star ratings')
 
+    def __unicode__(self):
+
+        return self.user_info.first_name
