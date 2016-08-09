@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from chefs.models import Chef
-from patrons.models import Patron
 from django.db.models import Avg
+from users.models import User
 
 
 class Review(models.Model):
@@ -10,9 +10,9 @@ class Review(models.Model):
   text = models.CharField(max_length=500, blank=True, null=True,
                                  help_text='Patron\'s review of a chef/meal.')
   stars = models.IntegerField(help_text='Patron\'s star rating for a meal')
-  patron = models.ForeignKey('patrons.Patron', help_text='Foreign key to the '
-                             'patron the review is from.')
-  chef = models.ForeignKey('chefs.Chef', help_text='Foreign key to the chef '
+  user = models.ForeignKey(User, help_text='Foreign key to the '
+                             'user the review is from.')
+  chef = models.ForeignKey(Chef, help_text='Foreign key to the user '
                            'that the review is about')
 
   def __unicode__(self):

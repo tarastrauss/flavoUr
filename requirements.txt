@@ -1,4 +1,3 @@
 Django==1.9.4
 django-webpack-loader
-django-annoying
 django-allauth

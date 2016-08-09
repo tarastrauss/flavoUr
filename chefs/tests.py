@@ -19,6 +19,6 @@ class ChefTestCase(TestCase):
 
         # Asserts chef object is created and linked to user
         self.assertEqual(1, len(Chef.objects.all()))
-        self.assertEqual(self.test_user.id, chef_info.user.id)
-        self.assertEqual(chef_info.pk, self.test_user.chef.pk)
+        self.assertEqual(self.test_user, chef_info.user)
+        self.assertEqual(chef_info, self.test_user.chef)
 

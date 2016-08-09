@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'webpack_loader',
     'annoying',
-    'patrons',
     'chefs',
     'reviews',
     'users',
