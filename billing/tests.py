@@ -32,6 +32,6 @@ class AddressTestCase(TestCase):
         self.assertEqual(self.chef, address_2.chef)
 
         # Tests validation error when chef and user is empty
-        address_3 = Address(street_address='12', city='db', state='ca', zip='91789', title="yo" )
+        address_3 = Address(street_address='12', city='db', state='ca', zip='91789', title="yo")
         self.assertRaises(ValidationError, address_3.save)
 

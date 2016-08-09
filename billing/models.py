@@ -34,7 +34,8 @@ class Address(models.Model):
 
     def save(self, *args, **kwargs):
         '''
-        Ensures user or chef is specified before save
+        Ensures user or chef is specified before the instace is saved to
+        the database.
         '''
 
         if not self.user and not self.chef:
