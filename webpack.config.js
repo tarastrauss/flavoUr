@@ -8,7 +8,7 @@ module.exports = {
   //base directory for resolving entry option
   context: __dirname,
   //the entry point created from earlier.
-  entry: './flavoUr/templates/flavoUr/index.js',
+  entry: './shared/templates/index.js',
 
   output: {
     //destination of compiled bundle
