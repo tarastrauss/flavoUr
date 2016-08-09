@@ -31,10 +31,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'webpack_loader',
-    'annoying',
     'chefs',
     'reviews',
     'users',
+    'billing',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
