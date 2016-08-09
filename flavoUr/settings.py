@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'webpack_loader',
     'annoying',
-    'patrons',
     'chefs',
+    'reviews',
     'users',
     'django.contrib.sites',
     'django.contrib.admin',
