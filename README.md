@@ -4,8 +4,8 @@
 
 ### Contributers 
 
-- Tara Strauss: Full Stack Engineer [Check out my work!](www.tarabytesofcode.com)
-- Anthony Lee: Full Stack Engineer [Check out my work!](www.anthonylee.xyz)
+- Tara Strauss: Full Stack Engineer [Check out my work!](http://tarabytesofcode.com)
+- Anthony Lee: Full Stack Engineer [Check out my work!](http://anthonylee.xyz)
 - Rachel McLeold: UX Designer
 
 ### User Stories
