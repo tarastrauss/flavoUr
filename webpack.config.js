@@ -1,54 +1,71 @@
-//require dependencies
-var path = require('path')
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+// //require dependencies
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-  //base directory for resolving entry option
-  context: __dirname,
-  //the entry point created from earlier.
-  entry: './shared/templates/index.js',
+const CLIENT_DIR = path.resolve(__dirname, 'shared');
+const SERVER_DIR = path.resolve(__dirname, 'server/generated');
+const DIST_DIR = path.resolve(__dirname, 'dist');
 
-  output: {
-    //destination of compiled bundle
-    path: path.resolve('./public/bundles/'),
-    filename: '[name]-[hash].js',
+const loaders = [{
+    test: /\.js$/,
+    include: CLIENT_DIR,
+    loader: 'babel-loader',
+    query: {
+      presets: ['es2015', 'react']
+    }
   },
+  {
+    test: /\.less$/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
 
-  plugins: [
-    //stores data about bundles.
-    new BundleTracker({
-      filename: './webpack-stats.json'
-    }),
-    new ExtractTextPlugin('style.css', { allChunks: true}),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    })
-  ],
+  }
+];
 
-  module: {
-    loaders: [
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      //regexp that tells webpack to use following loaders on .js & .jsx files
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        //uses babel loader
-        loader: 'babel-loader',
-        query: {
-          //specifies that webpack is handling react.js
-          presets: ['react']
-        }
+module.exports = [
+  {
+    name: 'client',
+    target: 'web',
+    context: CLIENT_DIR,
+    entry: './index.js',
+    output: {
+      path: DIST_DIR,
+      filename: 'bundle.js'
+    },
+    module: {
+      loaders: loaders
+    },
+    resolve: {
+      alias: {
+        components: path.resolve(CLIENT_DIR, 'components')
       }
+    },
+    plugins: [
+      new ExtractTextPlugin('bundle.css', {allChunks: true})
     ]
   },
-
-  resolve: {
-    //tells webpack where to look for modules
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx']
+  {
+    name: 'server',
+    target: 'node',
+    context: CLIENT_DIR,
+    entry: {
+      app: 'components/app/index.js'
+    },
+    output: {
+      path: SERVER_DIR,
+      filename: '[name].js',
+      libraryTarget: 'commonjs2'
+    },
+    externals: /^[a-z\-0-9]+$/,
+    module: {
+      loaders: loaders
+    },
+    resolve: {
+      alias: {
+        components: path.resolve(CLIENT_DIR, 'components')
+      }
+    },
+    plugins: [
+      new ExtractTextPlugin('[name].css')
+    ]
   }
-}
+];

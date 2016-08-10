@@ -158,10 +158,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_URL = './shared/'
+STATIC_URL = '/public/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'shared'),
+    os.path.join(BASE_DIR, 'public'),
 )
 
 WEBPACK_LOADER = {
