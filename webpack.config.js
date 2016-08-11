@@ -1,7 +1,7 @@
 // //require dependencies
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const webpack = require('webpack');
 const CLIENT_DIR = path.resolve(__dirname, 'shared');
 const SERVER_DIR = path.resolve(__dirname, 'server/generated');
 const DIST_DIR = path.resolve(__dirname, 'dist');
@@ -65,7 +65,12 @@ module.exports = [
       }
     },
     plugins: [
-      new ExtractTextPlugin('[name].css')
+      new ExtractTextPlugin('[name].css'),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
+      })
     ]
   }
 ];

@@ -1,10 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {} from './style.less';
 
-class App extends Component {
-  render() {
-    return <div>Hello world from a React shared component 2</div>;
+var App = React.createClass({
+  render: function() {
+      // this.loadData();
+      return (
+          <h1>
+          SUP, React!
+          </h1>
+      )
   }
-}
+});
 
-export default App;
+// export default App;
+module.exports = App;

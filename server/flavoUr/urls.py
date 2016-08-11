@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^profile/', views.profile)
+    url(r'^profile/', views.profile),
+    url(r'^test/', views.test)
 ]
