@@ -13,5 +13,6 @@ def profile(request):
   return render_to_response('flavoUr/base.html', context=RequestContext(request))
 
 def test(request):
-  response[message] = "this is a test"
+  response = {}
+  response['message'] = "this is a testy test"
   return JsonResponse(response)
