@@ -1,6 +1,6 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
-require("../../static/css/style.css");
+require("../static/css/style.css");
 var Hello = React.createClass ({
     render: function() {
         return (

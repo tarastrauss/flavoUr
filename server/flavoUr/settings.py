@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'webpack_loader',
+    'corsheaders',
     'chefs',
     'reviews',
     'users',
@@ -72,6 +73,7 @@ WSGI_APPLICATION = 'flavoUr.wsgi.application'
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,7 +82,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SITE_ID=6
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000'
+)
+
+
+SITE_ID=7
 
 # auth and allauth settings
 # http://django-allauth.readthedocs.io/en/latest/overview.html
