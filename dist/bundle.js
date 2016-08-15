@@ -21503,7 +21503,6 @@
 	      }
 	      return response.json();
 	    }).then(function (data) {
-	      console.log('the message is: ', data.message);
 	      _this.setState({ message: data.message });
 	    });
 	  },
