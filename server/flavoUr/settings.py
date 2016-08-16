@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'reviews',
     'users',
     'billing',
+    'menus',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
