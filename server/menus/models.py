@@ -20,6 +20,25 @@ class Menu(models.Model):
 
         return self.title
 
+    def to_dict(self):
+        '''
+        Return a dictionary representation of the menu.
+
+        @return: Dictionary representation of the menu.
+        @rtype: dict
+        '''
+
+        items = list(Item.objects.filter(menu=self.id).values())
+        d = {
+            'id': self.id,
+            'chef': self.chef,
+            'title': self.title,
+            'delivery': self.delivery,
+            'items': items
+        }
+        return d
+
+
 class Item(models.Model):
     '''
     Represents an item on a menu.
@@ -37,3 +56,4 @@ class Item(models.Model):
     def __unicode__(self):
 
         return self.title
+

@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'users',
     'billing',
     'menus',
+    'rest_framework',
+    'simplejson',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,6 +124,13 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL = '/profile/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
