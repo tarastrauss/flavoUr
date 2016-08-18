@@ -25,7 +25,7 @@ class Item(models.Model):
     Represents an item on a menu.
     '''
     menu = models.ForeignKey(Menu, help_text='Foreign key to the menu the item'
-                             ' belongs to.')
+                             ' belongs to.', related_name='menu')
     title = models.CharField(max_length=30, help_text='Represents the name of the item.')
     size = models.CharField(max_length=30, help_text='Represents serving size for the item.')
     price = models.DecimalField(max_digits=6, decimal_places=2,
