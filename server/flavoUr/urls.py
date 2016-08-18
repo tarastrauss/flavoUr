@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^profile/', views.profile),
     url(r'^test/', views.test),
-    url(r'^menus/', include('menus.urls'))
+    url(r'^', include('menus.urls'))
 ]
