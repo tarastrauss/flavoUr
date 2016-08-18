@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
-from menus.models import Menu
-from menus.serializers import MenuSerializer
+from menus.models import Menu, Item
+from menus.serializers import MenuSerializer, ItemSerializer
 from django.http import Http404
 from rest_framework import generics
+from rest_framework import permissions
 
 class JSONResponse(HttpResponse):
     """
@@ -24,3 +25,14 @@ class MenuList(generics.ListCreateAPIView):
 class MenuDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
+
+class ItemList(generics.ListAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+
+    # def perform_create(self, serializer):
+    #     serializer.save(owner=self.request.menu)
+
+class ItemDetail(generics.RetrieveAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
