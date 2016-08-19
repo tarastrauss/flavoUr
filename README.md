@@ -25,7 +25,7 @@ To connect aspiring chefs to users tired of the usual selection of takeout and f
 
 ### Technologies
 
-###### *flavoUr is an isomorphic app made using React and Django.*
+###### *flavoUr is an isomorphic app made using React and Django.* :fire:
 
 **Frontend**
 - React.js
