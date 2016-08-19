@@ -6,9 +6,13 @@
 
 - Tara Strauss: Full Stack Engineer [Check out my work!](http://tarabytesofcode.com)
 - Anthony Lee: Full Stack Engineer [Check out my work!](http://anthonylee.xyz)
-- Rachel McLeold: UX Designer
+
+### Objective
+To connect aspiring chefs to users tired of the usual selection of takeout and fastfood. The flavoUr app aims to provide amateur chefs a new source of income and another way to share their 'flavoUr' with those around them.
 
 ### User Stories
+
+-MVP:
 
 *GIVEN*: A user (patron) is hungry and wants to eat a homecooked meal.  
 *WHEN*: A user comes to our app.  
@@ -29,16 +33,19 @@
 - Javascript
 - CSS
 - HTML
-- frontend visual framework? bootstrap? materialize? animate.css?
+- Material Design
 
 **Backend**
 - React.js
+- Node.js
+- Express
 - Django 1.9.4
+- Django Rest Framework
 - Python 2.7
 - MySQL
 
 ### Installation
-Yes
+
 
 ### Deployment
 
