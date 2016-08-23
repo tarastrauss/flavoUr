@@ -19,11 +19,16 @@ class Order(models.Model):
     item = models.ManyToManyField(Item, help_text='Foreign key to the selected items.')
 
     total_price = models.DecimalField(null=True, blank=True, max_digits=6, decimal_places=2,
+                                help_text='Represents the price for the item.')
 
     @property
     def total_price(self):
         self._total_price = self.item.aggregate(Sum('price'))
         return self._total_price
+
+    # @total_price.setter
+    # def total_price(self):
+
 
     def __unicide__(self):
 
