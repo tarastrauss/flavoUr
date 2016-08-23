@@ -33,11 +33,7 @@ class MenuForm extends React.Component {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     }),
-      body: {
-        "title": this.state.title,
-        "chef": this.state.chef,
-        "delivery": this.state.delivery
-      }
+      body: JSON.stringify(this.state)
     }).then(function(res) {
         console.log(res);
       }).then(function(json) {
