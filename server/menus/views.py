@@ -22,16 +22,6 @@ class menu_root(APIView):
         'Items': items_view(request, *args, **kwargs).data
     })
 
-
-  def post(self, request, *args, **kwargs):
-
-    menu_view = MenuList.as_view()
-    items_view = ItemList.as_view()
-    return Response({
-        'Menu': menu_view(request, *args, **kwargs).data,
-        'Items': items_view(request, *args, **kwargs).data
-    })
-
 class MenuList(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
@@ -39,18 +29,22 @@ class MenuList(generics.ListCreateAPIView):
 class MenuDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
-    lookup_field = "pk"
 
 class ItemList(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.menu)
+      menu = Menu.objects.get(pk=self.kwargs['pk'])
+      serializer.save(menu=menu)
 
     def get_queryset(self):
       menu_pk = self.kwargs['pk']
       return Item.objects.filter(menu__pk=menu_pk)
 
 class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Item.objects.all()
     serializer_class = ItemSerializer
+
+    def get_queryset(self):
+      menu_pk = self.kwargs['menu_pk']
+      item_pk = self.kwargs['pk']
+      return Item.objects.filter(menu__pk=menu_pk, pk=item_pk)
