@@ -4,6 +4,7 @@ from users.models import User
 from chefs.models import Chef
 from menus.models import Menu, Item
 from django.core.urlresolvers import reverse
+
 class MenuTestCase(TestCase):
 
     def setUp(self):
