@@ -6,3 +6,4 @@ flavoUr_env/
 webpack-stats.json
 app/flavoUr/local_settings.py
 dist/
+server/generated/
