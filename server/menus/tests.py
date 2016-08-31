@@ -14,7 +14,8 @@ class MenuTestCase(TestCase):
                                              first_name="Foxy")
         self.chef = Chef.objects.create(user=self.test_user)
         self.menu = Menu.objects.create(chef=self.chef, title='foxy food', delivery=True )
-
+        self.item = Item.objects.create(menu=self.menu, title="kibbles", size="the whole bowl",
+                                   price=13.33, description="food for foxy")
     def test_menu_creation(self):
         '''
         Makes sure menu is properly created and linked to chef.
@@ -38,13 +39,12 @@ class MenuTestCase(TestCase):
         '''
         Tests GET metho for menu-detail and item-detail
         '''
-        item = Item.objects.create(menu=self.menu, title="kibbles", size="the whole bowl",
-                                   price=13.33, description="food for foxy")
+
         url = reverse('menu-detail', kwargs={'pk':self.menu.id})
         response = self.client.get(url)
         self.assertEqual(response.data, {'id': 1, 'chef':1, 'title':'foxy food', 'delivery':True})
 
-        url = reverse('item-detail', kwargs={'menu_pk':self.menu.id,'pk':item.id})
+        url = reverse('item-detail', kwargs={'menu_pk':self.menu.id,'pk':self.item.id})
         response = self.client.get(url)
         self.assertEqual(response.data, {'id':1, 'title':'kibbles', 'size':'the whole bowl', 'price':'13.33', 'description':'food for foxy', 'menu':1})
 
@@ -63,8 +63,24 @@ class MenuTestCase(TestCase):
         Tests POST method for item-list.
         '''
         url = reverse('item-list', kwargs={'pk':self.menu.id})
-        data = {'title':'foxy snacks', 'size':'all of it', 'price':'10.00', 'description':'food for foxy', 'menu':1}
+        data = {'title':'foxy snacks', 'size':'all of it', 'price':10.00, 'description':'food for foxy', 'menu':1}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(Item.objects.filter(title= 'foxy snacks').exists())
+
+    def test_get_menu_root(self):
+        '''
+        Tests GET method for menu-root
+        '''
+        url = reverse('menu-root', kwargs={'pk':self.menu.id})
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.data,   {
+            "Menu": {
+                "id": 1,
+                "chef": 1,
+                "title": "foxy food",
+                "delivery": True
+            },
+            "Items": [{"id":1,"title":"kibbles","description":"food for foxy", "price":'13.33', "size":"the whole bowl", "menu":1}]
+        })
 
