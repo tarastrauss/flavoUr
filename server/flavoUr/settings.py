@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'billing',
     'rest_framework',
     'menus',
+    'orders',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',

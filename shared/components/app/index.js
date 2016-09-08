@@ -1,5 +1,6 @@
 import React from 'react';
 import {} from './style.less';
+import MenuForm from '../menu/menuForm';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -25,6 +26,7 @@ var App = React.createClass({
   render: function() {
       return (
         <div className='message'>
+        <MenuForm />
           Message: {this.state.message}
         </div>
       )
